@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stored DOM XSS Lab</title>
+    <script>
+      function saveComment() {
+        var comment = document.getElementById("comment").value;
+        var commentsList = document.getElementById("comments-list");
+        var newComment = document.createElement("li");
+        newComment.innerHTML = comment;
+        commentsList.appendChild(newComment);
+        document.getElementById("comment").value = "";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Stored DOM XSS Lab</h1>
+    <form>
+      <label for="comment">Add a comment:</label><br />
+      <input type="text" id="comment" name="comment" /><br />
+      <button type="button" onclick="saveComment()">Submit</button>
+    </form>
+    <ul id="comments-list"></ul>
+  </body>
+</html>
